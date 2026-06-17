@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://msukdev.github.io/events.schema.json",
+  "title": "Events Configuration",
+  "description": "Schema for events displayed on the UK Developer Solutions Engineering events page",
+  "type": "object",
+  "required": [
+    "events"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Reference to this JSON schema"
+    },
+    "events": {
+      "type": "array",
+      "description": "Array of event objects",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "month",
+          "day",
+          "title",
+          "time",
+          "description",
+          "link"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Event type: in-person, virtual, or partner",
+            "enum": [
+              "in-person",
+              "conference",
+              "virtual",
+              "partner",
+              "ukdevse"
+            ]
+          },
+          "month": {
+            "type": "string",
+            "description": "Three-letter month abbreviation (uppercase)",
+            "pattern": "^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$",
+            "examples": [
+              "JAN",
+              "FEB",
+              "MAR",
+              "APR",
+              "MAY",
+              "JUN",
+              "JUL",
+              "AUG",
+              "SEP",
+              "OCT",
+              "NOV",
+              "DEC"
+            ]
+          },
+          "day": {
+            "type": "string",
+            "description": "Day of month (1-31) or multi-day format like '25<br />26' for consecutive days",
+            "examples": [
+              "1",
+              "15",
+              "25<br />26"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "Event title/name",
+            "minLength": 1
+          },
+          "time": {
+            "type": "string",
+            "description": "Event time or time range (e.g., '9:00 AM - 5:00 PM GMT')",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief description of the event",
+            "minLength": 1
+          },
+          "link": {
+            "type": "string",
+            "description": "URL to event details or registration page",
+            "format": "uri",
+            "pattern": "^https?://"
+          },
+          "location": {
+            "type": "string",
+            "description": "Physical or virtual location of the event",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

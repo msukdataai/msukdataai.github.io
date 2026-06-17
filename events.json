@@ -1,0 +1,35 @@
+{
+    "$schema": "./events.schema.json",
+    "events": [
+        {
+            "type": "conference",
+            "month": "SEP",
+            "day": "28",
+            "title": "Microsoft Fabric and SQL Conference",
+            "location": "Barcelona, Spain",
+            "time": "Full Day",
+            "description": "FabCon Europe 2026 - Data & AI Conference",
+            "link": "https://espc.tech/conference/fabcon-europe-2026/"
+        },
+        {
+            "type": "in-person",
+            "month": "SEP",
+            "day": "23-24",
+            "title": "Big Data LDN",
+            "location": "London Olympia",
+            "time": "Full Day",
+            "description": "Big data and analytics conference",
+            "link": "https://www.bigdataldn.com/"
+        },
+        {
+            "type": "virtual",
+            "month": "JUN",
+            "day": "23",
+            "title": "Microsoft Fabric: A Technical Update for Public Healthcare Organisations",
+            "location": "Online",
+            "time": "12:00-13:00 BST",
+            "description": "Technical webinar on Microsoft Fabric for healthcare and public sector organisations",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.53fb63aa-7821-47a3-9f34-c1ec1cb22dcc@72f988bf-86f1-41af-91ab-2d7cd011db47"
+        }
+    ]
+}

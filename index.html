@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UK Data & AI Community</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="home-page">
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+      🌙
+    </button>
+
+    <header class="hero">
+      <div class="hero-content">
+        <h1>UK Data & AI Community</h1>
+        <h2>Learn together. Build together. Make an impact.</h2>
+        <p class="tagline">Connecting tech enthusiasts passionate about Microsoft data and AI technologies</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="links-section">
+        <div class="links-grid">
+          <a href="events.html" class="link-card">
+            <div class="card-icon">📌</div>
+            <h3>Events</h3>
+            <p>Upcoming sessions and workshops</p>
+          </a>
+
+          <button type="button" class="link-card link-card-button" id="connect-button">
+            <div class="card-icon">📎</div>
+            <h3>Connect With Us</h3>
+            <p>Find us on LinkedIn</p>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="connect-modal" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="connect-title">
+        <button class="modal-close" id="modal-close" type="button" aria-label="Close popup">×</button>
+        <h3 id="connect-title">Connect With Us on LinkedIn</h3>
+        <p>Meet the team and connect on LinkedIn:</p>
+        <div class="modal-links" id="team-links-list"></div>
+        <button class="modal-action-close" id="modal-action-close" type="button">Close</button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const storageKey = "uk-data-ai-theme";
+        const toggle = document.getElementById("theme-toggle");
+        const modal = document.getElementById("connect-modal");
+        const connectButton = document.getElementById("connect-button");
+        const modalClose = document.getElementById("modal-close");
+        const modalActionClose = document.getElementById("modal-action-close");
+        const teamLinksList = document.getElementById("team-links-list");
+
+        modal.hidden = true;
+        document.body.classList.remove("modal-open");
+
+        function setTheme(theme) {
+          document.body.setAttribute("data-theme", theme);
+          toggle.textContent = theme === "dark" ? "☀️" : "🌙";
+          toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+          localStorage.setItem(storageKey, theme);
+        }
+
+        function getInitialTheme() {
+          const saved = localStorage.getItem(storageKey);
+          if (saved === "dark" || saved === "light") {
+            return saved;
+          }
+          return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        toggle.addEventListener("click", function () {
+          const next = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          setTheme(next);
+        });
+
+        connectButton.addEventListener("click", function () {
+          modal.hidden = false;
+          document.body.classList.add("modal-open");
+        });
+
+        function getInitials(name) {
+          if (!name) return "TM";
+          const parts = name.trim().split(/\s+/).slice(0, 2);
+          return parts.map(function (part) {
+            return part.charAt(0).toUpperCase();
+          }).join("");
+        }
+
+        async function loadTeamLinks() {
+          try {
+            const response = await fetch("team-links.json");
+            if (!response.ok) {
+              throw new Error("Unable to load team links");
+            }
+
+            const data = await response.json();
+            const members = Array.isArray(data.members) ? data.members.slice() : [];
+            members.sort(function (a, b) {
+              return (a.name || "").localeCompare(b.name || "");
+            });
+
+            if (!members.length) {
+              teamLinksList.innerHTML = '<p class="modal-empty">Team links will be added soon.</p>';
+              return;
+            }
+
+            teamLinksList.innerHTML = members
+              .map(function (member) {
+                const initials = member.initials || getInitials(member.name);
+                const role = member.role || "Team Member";
+                const linkedin = member.linkedin || "#";
+                return [
+                  '<article class="member-card">',
+                  '  <div class="member-avatar" aria-hidden="true">' + initials + '</div>',
+                  '  <div class="member-info">',
+                  '    <p class="member-name">' + member.name + '</p>',
+                  '    <p class="member-role">' + role + '</p>',
+                  '  </div>',
+                  '  <a class="member-link" href="' + linkedin + '" target="_blank" rel="noopener noreferrer">',
+                  '    <span class="linkedin-badge" aria-hidden="true">in</span>',
+                  '    <span>LinkedIn</span>',
+                  '  </a>',
+                  '</article>'
+                ].join('');
+              })
+              .join("");
+          } catch (error) {
+            teamLinksList.innerHTML = '<p class="modal-empty">Could not load LinkedIn links right now.</p>';
+            console.error(error);
+          }
+        }
+
+        function closeModal() {
+          modal.hidden = true;
+          document.body.classList.remove("modal-open");
+        }
+
+        modalClose.addEventListener("click", closeModal);
+        modalActionClose.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && !modal.hidden) {
+            closeModal();
+          }
+        });
+
+        setTheme(getInitialTheme());
+        loadTeamLinks();
+      })();
+    </script>
+
+    <footer>
+      <p>&copy; 2026 UK Data & AI Community</p>
+    </footer>
+    <script src="animations.js" defer></script>
+  </body>
+</html>
