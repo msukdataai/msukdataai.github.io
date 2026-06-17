@@ -144,7 +144,7 @@
   const tags = [
     "Microsoft Fabric", "Microsoft Foundry", "Azure Machine Learning", "Power BI",
     "Data Engineering", "Machine Learning", "Azure OpenAI", "Azure SQL",
-    "Real-time Intelligence", "OneLake"
+    "Real-time Intelligence", "OneLake", "Data Analytics", "Data Science", "Deep Learning"
   ];
 
   const container = document.createElement("div");
