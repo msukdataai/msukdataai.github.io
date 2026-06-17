@@ -1046,6 +1046,12 @@ body[data-theme="light"] .hero-tag {
     color: rgba(0, 100, 130, 0.85);
 }
 
+@media (max-width: 768px) {
+    .hero-tags {
+        display: none;
+    }
+}
+
 /* ─── Scroll-reveal ───────────────────────────────────────────────────────── */
 .will-reveal {
     opacity: 0;
@@ -1111,6 +1117,7 @@ body[data-theme="light"] .hero-tag {
     );
     background-size: 300% 300%;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
