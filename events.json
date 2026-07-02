@@ -30,6 +30,16 @@
             "time": "12:00-13:00 BST",
             "description": "Technical webinar on Microsoft Fabric for healthcare and public sector organisations",
             "link": "https://msit.events.teams.microsoft.com/event/msit.53fb63aa-7821-47a3-9f34-c1ec1cb22dcc@72f988bf-86f1-41af-91ab-2d7cd011db47"
+        },
+        {
+            "type": "partner",
+            "month": "JUL",
+            "day": "15",
+            "title": "A Practical Guide to the P to F-SKU Transition for Healthcare",
+            "location": "Online",
+            "time": "13:00-14:00 BST",
+            "description": "Understand Microsoft’s move from Power BI Premium (P-SKUs) to Microsoft Fabric (F-SKUs) and what it means for healthcare organisations",
+            "link": "https://www.ans.co.uk/events/a-practical-guide-the-p-to-f-sku-transition-for-healthcare/"
         }
     ]
 }
