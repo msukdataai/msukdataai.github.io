@@ -2,6 +2,16 @@
     "$schema": "./events.schema.json",
     "events": [
         {
+            "type": "in-person",
+            "month": "SEP",
+            "day": "23-24",
+            "title": "Big Data LDN",
+            "location": "London Olympia",
+            "time": "Full Day",
+            "description": "Big data and analytics conference",
+            "link": "https://www.bigdataldn.com/"
+        },
+        {
             "type": "conference",
             "month": "SEP",
             "day": "28",
@@ -12,14 +22,14 @@
             "link": "https://espc.tech/conference/fabcon-europe-2026/"
         },
         {
-            "type": "in-person",
-            "month": "SEP",
-            "day": "23-24",
-            "title": "Big Data LDN",
-            "location": "London Olympia",
+            "type": "conference",
+            "month": "NOV",
+            "day": "17-20",
+            "title": "Microsoft Ignite",
+            "location": "San Francisco, USA",
             "time": "Full Day",
-            "description": "Big data and analytics conference",
-            "link": "https://www.bigdataldn.com/"
+            "description": "Microsoft Ignite - Data & AI Conference",
+            "link": "https://ignite.microsoft.com/"
         },
         {
             "type": "virtual",
@@ -39,7 +49,105 @@
             "location": "Online",
             "time": "13:00-14:00 BST",
             "description": "Understand Microsoft’s move from Power BI Premium (P-SKUs) to Microsoft Fabric (F-SKUs) and what it means for healthcare organisations",
-            "link": "https://www.ans.co.uk/events/a-practical-guide-the-p-to-f-sku-transition-for-healthcare/"
-        }
+            "link": "https://www.ans.co.uk/events/a-practical-guide-the-p-to-f-sku-transition-for-healthcare/"        },
+        {
+            "type": "launch",
+            "track": "data",
+            "month": "SEP",
+            "day": "W/C 7",
+            "title": "Data Track 1: SQL Server Modernisation & Extended Security Updates",
+            "location": "Online",
+            "time": "TBC",
+            "description": "SQL Server 2016 reached End of Support on 14 July 2026, creating important security, compliance and operational considerations for organisations still running legacy database workloads. In this session, we will explore the options available to customers."
+        },
+        {
+            "type": "launch",
+            "track": "ai",
+            "month": "SEP",
+            "day": "W/C 14",
+            "title": "AI Track 1: Introduction to Microsoft AI & AI in Healthcare",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Introduction to Microsoft's AI platform, including Microsoft 365 Copilot, Copilot Studio, Microsoft Foundry and healthcare solutions."
+        },
+        {
+            "type": "launch",
+            "track": "data",
+            "month": "SEP",
+            "day": "W/C 21",
+            "title": "Data Track 2: Data Integration & Engineering in Fabric",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Explore how Fabric simplifies data integration and engineering. Learn how to connect, transform, and manage data efficiently across your organisation using a unified platform."
+        },
+        {
+            "type": "launch",
+            "track": "ai",
+            "month": "SEP",
+            "day": "W/C 28",
+            "title": "AI Track 2: Microsoft AI Copilot Chat, M365 Copilot Premium, Cowork and Microsoft Scout",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Dive deeper into Microsoft's AI assistants at work to transform productivity, streamline workflows and help teams work smarter."
+        },
+        {
+            "type": "launch",
+            "track": "data",
+            "month": "OCT",
+            "day": "W/C 5",
+            "title": "Data Track 3: Data Analytics and Copilot in Fabric",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Turn data into actionable insights with Power BI and Microsoft Fabric. Discover how Copilot accelerates analytics, reporting, and business intelligence development."
+        },
+        {
+            "type": "launch",
+            "track": "ai",
+            "month": "OCT",
+            "day": "W/C 12",
+            "title": "AI Track 3: From Copilots to Agentic Solutions — Microsoft Foundry vs. Copilot Studio",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Session 3 of 5 in the AI Track — comparing agentic approaches with Azure AI Foundry and Copilot Studio."
+        },
+        {
+            "type": "launch",
+            "track": "data",
+            "month": "OCT",
+            "day": "W/C 19",
+            "title": "Data Track 4: Preparing Data for the AI Era with Fabric Intelligence with Fabric IQ",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Session 4 of 5 in the Data Track — Fabric IQ capabilities and preparing your data estate for AI workloads."
+        },
+        {
+            "type": "launch",
+            "track": "ai",
+            "month": "OCT",
+            "day": "W/C 26",
+            "title": "AI Track 4: Agent Governance — Responsible AI",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Session 4 of 5 in the AI Track — responsible AI principles, governance, and the Microsoft Agent Framework."
+        },
+        {
+            "type": "launch",
+            "track": "data",
+            "month": "NOV",
+            "day": "TBA",
+            "title": "Data Track 5: Updates from FabCon/SQLCon ",
+            "location": "Online",
+            "time": "TBC",
+            "description": "Get a curated summary of the most important announcements, product updates, and success stories from the Fabric and SQL conference events."
+        },
+        {
+            "type": "launch",
+            "track": "ai",
+            "month": "DEC",
+            "day": "TBA",
+            "title": "AI Track 5: AI Updates from Microsoft Ignite",
+            "location": "Online",
+            "time": "TBC",
+            "description": "End the year with the latest AI innovations from Microsoft Ignite. Discover new capabilities, roadmap updates, and practical opportunities for your organisation in the year ahead."}
     ]
 }

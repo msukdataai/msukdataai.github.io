@@ -12,35 +12,80 @@
     </button>
 
     <header class="hero hero-small">
-      <div class="hero-content">
-        <h1>Events</h1>
-        <!-- <p class="tagline">
-          Discover Data & AI sessions for tech enthusiasts
-        </p> -->
-      </div>
-    </header>
-
-    <nav class="top-nav">
       <a href="index.html" class="nav-home" aria-label="Back to home">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z"/>
           <polyline points="9 21 9 12 15 12 15 21"/>
         </svg>
-        Home
       </a>
-    </nav>
+      <div class="hero-content">
+        <h1>Events</h1>
+      </div>
+      <img src="mascots.png" alt="UK Data &amp; AI mascots" class="hero-mascot" />
+    </header>
 
     <main class="container">
 
+      <!-- vertical circuit rail — nodes activate via IntersectionObserver -->
+      <nav class="circuit-rail" aria-label="Page sections">
+        <div class="circuit-rail-line"></div>
+        <div class="circuit-rail-node active" data-target="group-launch">
+          <span class="node-dot"></span>
+          <span class="node-label">Launch</span>
+        </div>
+        <div class="circuit-rail-line"></div>
+        <div class="circuit-rail-node" data-target="group-inperson">
+          <span class="node-dot"></span>
+          <span class="node-label">In-Person</span>
+        </div>
+        <div class="circuit-rail-line"></div>
+        <div class="circuit-rail-node" data-color="purple" data-target="group-partner">
+          <span class="node-dot"></span>
+          <span class="node-label">Partner</span>
+        </div>
+        <div class="circuit-rail-line"></div>
+        <div class="circuit-rail-node" data-target="group-past">
+          <span class="node-dot"></span>
+          <span class="node-label">Past</span>
+        </div>
+        <div class="circuit-rail-line"></div>
+      </nav>
+
+      <section class="launch-series-section" id="group-launch">
+        <div class="launch-series-header">
+          <span class="launch-series-emoji">🚀</span>
+          <div>
+            <h2>Launch Series</h2>
+            <p class="launch-series-subtitle">Autumn/Winter 2026 · Data &amp; AI Webinar Series Delivered By Microsoft Engineers and Community Members</p>
+          </div>
+        </div>
+          <section class="speaker-cta">
+          <div class="speaker-cta-content">
+            <div class="speaker-cta-text">
+              <h3>🎤 Want to present at our UK Data &amp; AI Event?</h3>
+              <p>We're always looking for speakers, connect and let us know what topic you'd like to present on.</p>
+            </div>
+            <a href="index.html" class="speaker-cta-btn">Connect</a>
+          </div>
+        </section>
+        <div id="launch-events"></div>
+      </section>
+
       <section class="events-list">
-        <h2>In-Person Events</h2>
-        <div id="upcoming-events"></div>
+        <div id="group-inperson">
+          <h2>In-Person Events</h2>
+          <div id="upcoming-events"></div>
+        </div>
 
-        <h2>Virtual Events</h2>
-        <div id="virtual-events"></div>
+        <div id="group-partner">
+          <h2>Partner Events</h2>
+          <div id="partner-events"></div>
+        </div>
 
-        <h2>Partner Events</h2>
-        <div id="partner-events"></div>
+        <div id="group-past">
+          <h2>Past Events</h2>
+          <div id="virtual-events"></div>
+        </div>
       </section>
     </main>
 
@@ -78,6 +123,13 @@
           const response = await fetch("events.json");
           const data = await response.json();
 
+          // Filter and render launch series events
+          const launchContainer = document.getElementById("launch-events");
+          const launchEvents = data.events.filter((event) => event.type === "launch");
+          launchEvents.forEach((event) => {
+            launchContainer.appendChild(createLaunchCard(event));
+          });
+
           // Filter and render in-person and conference events together
           const upcomingContainer = document.getElementById("upcoming-events");
           const inPersonEvents = data.events.filter(
@@ -87,7 +139,7 @@
             upcomingContainer.appendChild(createEventCard(event));
           });
 
-          // Filter and render virtual events
+          // Filter and render virtual events (past)
           const virtualContainer = document.getElementById("virtual-events");
           const virtualEvents = data.events.filter(
             (event) => event.type === "virtual",
@@ -107,6 +159,34 @@
         } catch (error) {
           console.error("Error loading events:", error);
         }
+      }
+
+      // Create a featured launch series card
+      function createLaunchCard(event) {
+        const card = document.createElement("div");
+        card.className = `event-card launch-series launch-${event.track}`;
+
+        const trackLabel = event.track === "data" ? "DATA TRACK" : "AI TRACK";
+        const linkHtml = event.link
+          ? `<a href="${event.link}" target="_blank" class="event-link">Register</a>`
+          : `<span class="event-link disabled">Registration Opens Soon</span>`;
+
+        card.innerHTML = `
+          <div class="event-date">
+            <span class="month">${event.month}</span>
+            <span class="day">${event.day}</span>
+          </div>
+          <div class="event-details">
+            <span class="track-badge track-${event.track}">${trackLabel}</span>
+            <h3>${event.title}</h3>
+            <p class="event-time">🕐 ${event.time}</p>
+            ${event.location ? `<p class="event-location">📍 ${event.location}</p>` : ""}
+            <p class="event-desc">${event.description}</p>
+            ${linkHtml}
+          </div>
+        `;
+
+        return card;
       }
 
       // Create an event card element
@@ -131,8 +211,51 @@
         return card;
       }
 
-      // Load events when page loads
-      loadEvents();
+      // Circuit rail: activate the node whose section top was last to scroll above 80px
+      (function () {
+        const nodes = Array.from(document.querySelectorAll('.circuit-rail-node'));
+        const sections = nodes
+          .map(n => ({ node: n, el: document.getElementById(n.dataset.target) }))
+          .filter(s => s.el);
+
+        let paused = false;
+
+        function setActive(node) {
+          nodes.forEach(n => n.classList.toggle('active', n === node));
+        }
+
+        function activate() {
+          if (paused) return;
+          let current = sections[0];
+          for (const s of sections) {
+            if (s.el.getBoundingClientRect().top < window.innerHeight * 0.5) current = s;
+          }
+          setActive(current.node);
+        }
+
+        document.addEventListener('scroll', activate, { passive: true });
+
+        nodes.forEach(n => {
+          n.addEventListener('click', () => {
+            const target = sections.find(s => s.node === n);
+            if (!target) return;
+
+            setActive(n);
+            paused = true;
+
+            const y = Math.max(0, target.el.getBoundingClientRect().top + window.scrollY - 20);
+            window.scrollTo({ top: y, behavior: 'smooth' });
+
+            // Re-enable scroll detection — do NOT call activate() so clicked section stays lit
+            let done = false;
+            const reenable = () => { if (!done) { done = true; paused = false; } };
+            window.addEventListener('scrollend', reenable, { once: true });
+            setTimeout(reenable, 3000);
+          });
+        });
+
+        loadEvents().then(() => requestAnimationFrame(activate));
+      })();
     </script>
 
     <footer>
