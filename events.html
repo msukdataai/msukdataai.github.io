@@ -211,50 +211,27 @@
         return card;
       }
 
-      // Circuit rail: activate the node whose section top was last to scroll above 80px
+      // Load events when page loads
+      loadEvents();
+
+      // Activate circuit rail node when its section enters the viewport
       (function () {
-        const nodes = Array.from(document.querySelectorAll('.circuit-rail-node'));
-        const sections = nodes
-          .map(n => ({ node: n, el: document.getElementById(n.dataset.target) }))
-          .filter(s => s.el);
-
-        let paused = false;
-
-        function setActive(node) {
-          nodes.forEach(n => n.classList.toggle('active', n === node));
-        }
-
-        function activate() {
-          if (paused) return;
-          let current = sections[0];
-          for (const s of sections) {
-            if (s.el.getBoundingClientRect().top < window.innerHeight * 0.5) current = s;
-          }
-          setActive(current.node);
-        }
-
-        document.addEventListener('scroll', activate, { passive: true });
+        const nodes = document.querySelectorAll('.circuit-rail-node');
+        // rootMargin cuts off top and bottom so only the section dominating the screen activates
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            nodes.forEach(n => {
+              n.classList.toggle('active', n.dataset.target === id);
+            });
+          });
+        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
 
         nodes.forEach(n => {
-          n.addEventListener('click', () => {
-            const target = sections.find(s => s.node === n);
-            if (!target) return;
-
-            setActive(n);
-            paused = true;
-
-            const y = Math.max(0, target.el.getBoundingClientRect().top + window.scrollY - 20);
-            window.scrollTo({ top: y, behavior: 'smooth' });
-
-            // Re-enable scroll detection — do NOT call activate() so clicked section stays lit
-            let done = false;
-            const reenable = () => { if (!done) { done = true; paused = false; } };
-            window.addEventListener('scrollend', reenable, { once: true });
-            setTimeout(reenable, 3000);
-          });
+          const el = document.getElementById(n.dataset.target);
+          if (el) observer.observe(el);
         });
-
-        loadEvents().then(() => requestAnimationFrame(activate));
       })();
     </script>
 

@@ -31,7 +31,13 @@
           <button type="button" class="link-card link-card-button" id="connect-button">
             <div class="card-icon">📎</div>
             <h3>Connect With Us</h3>
-            <p>Find us on LinkedIn</p>
+            <p>Let us know if you'd like to present a topic!</p>
+          </button>
+
+          <button type="button" class="link-card link-card-button" id="speakers-button">
+            <div class="card-icon">🎤</div>
+            <h3>Connect With Our Speakers</h3>
+            <p>Meet the stars who present at our events</p>
           </button>
         </div>
       </section>
@@ -41,9 +47,19 @@
       <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="connect-title">
         <button class="modal-close" id="modal-close" type="button" aria-label="Close popup">×</button>
         <h3 id="connect-title">Connect With Us on LinkedIn</h3>
-        <p>Connect and let us know if you'd like to present a topic</p>
+        <p>Organising Team </p>
         <div class="modal-links" id="team-links-list"></div>
         <button class="modal-action-close" id="modal-action-close" type="button">Close</button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="speakers-modal" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="speakers-title">
+        <button class="modal-close" id="speakers-modal-close" type="button" aria-label="Close popup">×</button>
+        <h3 id="speakers-title">Connect With Our Speakers on LinkedIn</h3>
+        <p>Meet the people who have presented at our events</p>
+        <div class="modal-links" id="speakers-links-list"></div>
+        <button class="modal-action-close" id="speakers-modal-action-close" type="button">Close</button>
       </div>
     </div>
 
@@ -56,8 +72,14 @@
         const modalClose = document.getElementById("modal-close");
         const modalActionClose = document.getElementById("modal-action-close");
         const teamLinksList = document.getElementById("team-links-list");
+        const speakersModal = document.getElementById("speakers-modal");
+        const speakersButton = document.getElementById("speakers-button");
+        const speakersModalClose = document.getElementById("speakers-modal-close");
+        const speakersModalActionClose = document.getElementById("speakers-modal-action-close");
+        const speakersLinksList = document.getElementById("speakers-links-list");
 
         modal.hidden = true;
+        speakersModal.hidden = true;
         document.body.classList.remove("modal-open");
 
         function setTheme(theme) {
@@ -85,6 +107,11 @@
           document.body.classList.add("modal-open");
         });
 
+        speakersButton.addEventListener("click", function () {
+          speakersModal.hidden = false;
+          document.body.classList.add("modal-open");
+        });
+
         function getInitials(name) {
           if (!name) return "TM";
           const parts = name.trim().split(/\s+/).slice(0, 2);
@@ -93,11 +120,11 @@
           }).join("");
         }
 
-        async function loadTeamLinks() {
+        async function loadMemberList(jsonPath, listEl) {
           try {
-            const response = await fetch("team-links.json");
+            const response = await fetch(jsonPath);
             if (!response.ok) {
-              throw new Error("Unable to load team links");
+              throw new Error("Unable to load links");
             }
 
             const data = await response.json();
@@ -107,11 +134,11 @@
             });
 
             if (!members.length) {
-              teamLinksList.innerHTML = '<p class="modal-empty">Team links will be added soon.</p>';
+              listEl.innerHTML = '<p class="modal-empty">Links will be added soon.</p>';
               return;
             }
 
-            teamLinksList.innerHTML = members
+            listEl.innerHTML = members
               .map(function (member) {
                 const initials = member.initials || getInitials(member.name);
                 const role = member.role || "Team Member";
@@ -132,13 +159,18 @@
               })
               .join("");
           } catch (error) {
-            teamLinksList.innerHTML = '<p class="modal-empty">Could not load LinkedIn links right now.</p>';
+            listEl.innerHTML = '<p class="modal-empty">Could not load LinkedIn links right now.</p>';
             console.error(error);
           }
         }
 
         function closeModal() {
           modal.hidden = true;
+          document.body.classList.remove("modal-open");
+        }
+
+        function closeSpeakersModal() {
+          speakersModal.hidden = true;
           document.body.classList.remove("modal-open");
         }
 
@@ -149,14 +181,25 @@
             closeModal();
           }
         });
+
+        speakersModalClose.addEventListener("click", closeSpeakersModal);
+        speakersModalActionClose.addEventListener("click", closeSpeakersModal);
+        speakersModal.addEventListener("click", function (event) {
+          if (event.target === speakersModal) {
+            closeSpeakersModal();
+          }
+        });
+
         document.addEventListener("keydown", function (event) {
-          if (event.key === "Escape" && !modal.hidden) {
-            closeModal();
+          if (event.key === "Escape") {
+            if (!modal.hidden) closeModal();
+            if (!speakersModal.hidden) closeSpeakersModal();
           }
         });
 
         setTheme(getInitialTheme());
-        loadTeamLinks();
+        loadMemberList("team-links.json", teamLinksList);
+        loadMemberList("speakers-links.json", speakersLinksList);
       })();
     </script>
 

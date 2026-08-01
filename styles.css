@@ -306,14 +306,14 @@ main, header, footer {
 }
 
 .link-card h3 {
-    font-size: 1.35rem;
+    font-size: 1rem;
     font-weight: 600;
     margin-bottom: 8px;
     color: #e6edf3;
 }
 
 .link-card p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #8b949e;
 }
 
