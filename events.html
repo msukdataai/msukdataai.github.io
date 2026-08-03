@@ -211,28 +211,68 @@
         return card;
       }
 
-      // Load events when page loads
-      loadEvents();
+      // Activate circuit rail node for whichever section is currently in view
+      const circuitRail = (function () {
+        const nodes = Array.from(document.querySelectorAll('.circuit-rail-node'));
+        const sections = nodes.map(n => document.getElementById(n.dataset.target)).filter(Boolean);
+        const lastId = sections.length ? sections[sections.length - 1].id : null;
 
-      // Activate circuit rail node when its section enters the viewport
-      (function () {
-        const nodes = document.querySelectorAll('.circuit-rail-node');
-        // rootMargin cuts off top and bottom so only the section dominating the screen activates
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const id = entry.target.id;
-            nodes.forEach(n => {
-              n.classList.toggle('active', n.dataset.target === id);
-            });
+        function setActive(id) {
+          nodes.forEach(n => n.classList.toggle('active', n.dataset.target === id));
+        }
+
+        // Last section can be too short to ever cross the reference line, so once the
+        // page is scrolled to its end we always treat the last section as current.
+        function computeActiveByScroll() {
+          const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+          if (atBottom) return lastId;
+          const refLine = window.innerHeight * 0.3;
+          let activeId = sections[0] && sections[0].id;
+          sections.forEach(el => {
+            if (el.getBoundingClientRect().top <= refLine) {
+              activeId = el.id;
+            }
           });
-        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+          return activeId;
+        }
+
+        // Right after a click, neighbouring sections can occupy the same scroll
+        // position (e.g. two short sections at the end of the page), so scroll-based
+        // detection alone can't tell them apart. Keep the clicked node active until
+        // the user actually scrolls again by their own input.
+        let overrideActive = false;
 
         nodes.forEach(n => {
-          const el = document.getElementById(n.dataset.target);
-          if (el) observer.observe(el);
+          n.addEventListener('click', () => {
+            const el = document.getElementById(n.dataset.target);
+            if (!el) return;
+            overrideActive = true;
+            setActive(n.dataset.target);
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
         });
+
+        ['wheel', 'touchmove', 'keydown', 'mousedown'].forEach(evt => {
+          window.addEventListener(evt, () => { overrideActive = false; }, { passive: true });
+        });
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (overrideActive || ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            setActive(computeActiveByScroll());
+            ticking = false;
+          });
+        }, { passive: true });
+
+        setActive(computeActiveByScroll());
+        return { refresh: () => setActive(computeActiveByScroll()) };
       })();
+
+      // Load events, then recompute the active rail node — the page is too short
+      // to know its true scroll height until the event cards have been inserted.
+      loadEvents().then(() => circuitRail.refresh());
     </script>
 
     <footer>

@@ -105,10 +105,10 @@
             "track": "ai",
             "month": "OCT",
             "day": "W/C 12",
-            "title": "AI Track 3: From Copilots to Agentic Solutions — Microsoft Foundry vs. Copilot Studio",
+            "title": "AI Track 3: From Copilots to Agentic Solutions - Microsoft Foundry vs. Copilot Studio",
             "location": "Online",
             "time": "TBC",
-            "description": "Session 3 of 5 in the AI Track — comparing agentic approaches with Azure AI Foundry and Copilot Studio."
+            "description": "Compare Microsoft Foundry and Copilot Studio, pro-code and low-code approaches for building agents, grounding them in enterprise data, and orchestrating agent interactions."
         },
         {
             "type": "launch",
@@ -118,17 +118,17 @@
             "title": "Data Track 4: Preparing Data for the AI Era with Fabric Intelligence with Fabric IQ",
             "location": "Online",
             "time": "TBC",
-            "description": "Session 4 of 5 in the Data Track — Fabric IQ capabilities and preparing your data estate for AI workloads."
+            "description": "High-quality data is the foundation of successful AI. Learn how Fabric Intelligence helps organisations prepare, govern, and optimise data for AI-powered solutions."
         },
         {
             "type": "launch",
             "track": "ai",
             "month": "OCT",
             "day": "W/C 26",
-            "title": "AI Track 4: Agent Governance — Responsible AI",
+            "title": "AI Track 4: Agent Governance - Responsible AI",
             "location": "Online",
             "time": "TBC",
-            "description": "Session 4 of 5 in the AI Track — responsible AI principles, governance, and the Microsoft Agent Framework."
+            "description": "Explore responsible AI principles, governance frameworks, and how to build secure, compliant, and trustworthy agentic solutions."
         },
         {
             "type": "launch",
