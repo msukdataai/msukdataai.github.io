@@ -577,6 +577,9 @@ body[data-theme="light"] .nav-home:hover {
 .event-details {
     padding: 24px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .event-details h3 {
@@ -618,6 +621,7 @@ body[data-theme="light"] .nav-home:hover {
     font-weight: 600;
     transition: all 0.3s ease;
     cursor: pointer;
+    margin-top: auto;
 }
 
 .event-link:hover {
@@ -1390,6 +1394,18 @@ footer {
     border: 1px solid rgba(123, 60, 237, 0.35);
 }
 
+.event-card.launch-ai .event-link:not(.disabled) {
+    background: linear-gradient(135deg, rgba(123, 60, 237, 0.35) 0%, rgba(90, 40, 180, 0.28) 100%);
+    border-color: rgba(123, 60, 237, 0.55);
+    color: #d3bcff;
+}
+
+.event-card.launch-ai .event-link:not(.disabled):hover {
+    background: linear-gradient(135deg, rgba(123, 60, 237, 0.5) 0%, rgba(90, 40, 180, 0.4) 100%);
+    border-color: rgba(160, 100, 255, 0.85);
+    box-shadow: 0 0 30px rgba(123, 60, 237, 0.4);
+}
+
 /* Disabled register button */
 .event-link.disabled {
     display: inline-block;
@@ -1403,6 +1419,7 @@ footer {
     cursor: default;
     pointer-events: none;
     text-decoration: none;
+    margin-top: auto;
 }
 
 /* ─── Vertical circuit rail ──────────────────────────────────────────────── */
