@@ -54,21 +54,23 @@
             "type": "launch",
             "track": "data",
             "month": "SEP",
-            "day": "W/C 7",
+            "day": "10",
             "title": "Data Track 1: SQL Server Modernisation & Extended Security Updates",
             "location": "Online",
-            "time": "TBC",
-            "description": "SQL Server 2016 reached End of Support on 14 July 2026, creating important security, compliance and operational considerations for organisations still running legacy database workloads. In this session, we will explore the options available to customers."
+            "time": "11:00-12:00 BST",
+            "description": "SQL Server 2016 reached End of Support on 14 July 2026, creating important security, compliance and operational considerations for organisations still running legacy database workloads. In this session, we will explore the options available to customers.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.ea16b874-fbfd-433a-bdac-3eb3e53cd4dd@72f988bf-86f1-41af-91ab-2d7cd011db47"
         },
         {
             "type": "launch",
             "track": "ai",
             "month": "SEP",
-            "day": "W/C 14",
+            "day": "14",
             "title": "AI Track 1: Introduction to Microsoft AI & AI in Healthcare",
             "location": "Online",
-            "time": "TBC",
-            "description": "Introduction to Microsoft's AI platform, including Microsoft 365 Copilot, Copilot Studio, Microsoft Foundry and healthcare solutions."
+            "time": "11:00-12:00 BST",
+            "description": "Introduction to Microsoft's AI platform, including Microsoft 365 Copilot, Copilot Studio, Microsoft Foundry and healthcare solutions.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.0ee71aa6-1591-4249-bebf-20c51bdfff68@72f988bf-86f1-41af-91ab-2d7cd011db47"
         },
         {
             "type": "launch",
