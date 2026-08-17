@@ -1628,13 +1628,13 @@ body[data-theme="light"] .track-badge.track-ai {
 }
 
 body[data-theme="light"] .event-card.launch-ai .event-link:not(.disabled) {
-    background: rgba(226, 211, 255, 0.9);
+    background: transparent;
     border-color: rgba(90, 31, 160, 0.45);
     color: #4b197f;
 }
 
 body[data-theme="light"] .event-card.launch-ai .event-link:not(.disabled):hover {
-    background: rgba(211, 187, 255, 0.95);
+    background: transparent;
     border-color: #5a1fa0;
     box-shadow: 0 0 20px rgba(90, 31, 160, 0.22);
 }
