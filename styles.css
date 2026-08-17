@@ -964,7 +964,7 @@ body[data-theme="light"] .link-card p,
 body[data-theme="light"] .series-info p,
 body[data-theme="light"] .modal-card p,
 body[data-theme="light"] footer {
-    color: #2f5966;
+    color: #1f4c59;
 }
 
 body[data-theme="light"] .event-date {
@@ -1625,6 +1625,18 @@ body[data-theme="light"] .track-badge.track-ai {
     background: rgba(90, 31, 160, 0.1);
     color: #5a1fa0;
     border-color: rgba(90, 31, 160, 0.25);
+}
+
+body[data-theme="light"] .event-card.launch-ai .event-link:not(.disabled) {
+    background: rgba(226, 211, 255, 0.9);
+    border-color: rgba(90, 31, 160, 0.45);
+    color: #4b197f;
+}
+
+body[data-theme="light"] .event-card.launch-ai .event-link:not(.disabled):hover {
+    background: rgba(211, 187, 255, 0.95);
+    border-color: #5a1fa0;
+    box-shadow: 0 0 20px rgba(90, 31, 160, 0.22);
 }
 
 body[data-theme="light"] .event-link.disabled {
