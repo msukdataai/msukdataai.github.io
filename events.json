@@ -91,7 +91,8 @@
             "title": "Data Track 2: Data Integration & Engineering in Fabric",
             "location": "Online",
             "time": "TBC",
-            "description": "Explore how Fabric simplifies data integration and engineering. Learn how to connect, transform, and manage data efficiently across your organisation using a unified platform."
+            "description": "Explore how Fabric simplifies data integration and engineering. Learn how to connect, transform, and manage data efficiently across your organisation using a unified platform.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.652bd526-c907-413a-8ac8-e37d7d86d342@72f988bf-86f1-41af-91ab-2d7cd011db47"
         },
         {
             "type": "launch",
@@ -101,7 +102,8 @@
             "title": "AI Track 2: Microsoft AI Copilot Chat, M365 Copilot Premium, Cowork and Microsoft Scout",
             "location": "Online",
             "time": "TBC",
-            "description": "Dive deeper into Microsoft's AI assistants at work to transform productivity, streamline workflows and help teams work smarter."
+            "description": "Dive deeper into Microsoft's AI assistants at work to transform productivity, streamline workflows and help teams work smarter.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.618701bd-5a24-4c0a-b092-19a14b1291a2@72f988bf-86f1-41af-91ab-2d7cd011db47?source=copyLinkOneEventsShareDialog"
         },
         {
             "type": "launch",
@@ -111,7 +113,8 @@
             "title": "Data Track 3: Data Analytics and Copilot in Fabric",
             "location": "Online",
             "time": "TBC",
-            "description": "Turn data into actionable insights with Power BI and Microsoft Fabric. Discover how Copilot accelerates analytics, reporting, and business intelligence development."
+            "description": "Turn data into actionable insights with Power BI and Microsoft Fabric. Discover how Copilot accelerates analytics, reporting, and business intelligence development.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.9aa41d9c-e4b2-4ee4-9b98-9f2c0696be7f@72f988bf-86f1-41af-91ab-2d7cd011db47?source=copyLinkLegacyShareLinkDialog"
         },
         {
             "type": "launch",
@@ -121,7 +124,8 @@
             "title": "AI Track 3: From Copilots to Agentic Solutions - Microsoft Foundry vs. Copilot Studio",
             "location": "Online",
             "time": "TBC",
-            "description": "Compare Microsoft Foundry and Copilot Studio, pro-code and low-code approaches for building agents, grounding them in enterprise data, and orchestrating agent interactions."
+            "description": "Compare Microsoft Foundry and Copilot Studio, pro-code and low-code approaches for building agents, grounding them in enterprise data, and orchestrating agent interactions.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.7dbde076-1975-4c1f-985e-2a63bf1b07c8@72f988bf-86f1-41af-91ab-2d7cd011db47?source=copyLinkOneEventsShareDialog"
         },
         {
             "type": "launch",
@@ -131,7 +135,8 @@
             "title": "Data Track 4: Preparing Data for the AI Era with Fabric Intelligence with Fabric IQ",
             "location": "Online",
             "time": "TBC",
-            "description": "High-quality data is the foundation of successful AI. Learn how Fabric Intelligence helps organisations prepare, govern, and optimise data for AI-powered solutions."
+            "description": "High-quality data is the foundation of successful AI. Learn how Fabric Intelligence helps organisations prepare, govern, and optimise data for AI-powered solutions.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.7b7fd9e8-5315-4b50-8b56-121b4b2b1e83@72f988bf-86f1-41af-91ab-2d7cd011db47?source=copyLinkLegacyShareLinkDialog"
         },
         {
             "type": "launch",
@@ -141,7 +146,8 @@
             "title": "AI Track 4: Agent Governance - Responsible AI",
             "location": "Online",
             "time": "TBC",
-            "description": "Explore responsible AI principles, governance frameworks, and how to build secure, compliant, and trustworthy agentic solutions."
+            "description": "Explore responsible AI principles, governance frameworks, and how to build secure, compliant, and trustworthy agentic solutions.",
+            "link": "https://msit.events.teams.microsoft.com/event/msit.3695c28e-45d2-4a90-bc7f-6d36bd84c43c@72f988bf-86f1-41af-91ab-2d7cd011db47"
         },
         {
             "type": "launch",
