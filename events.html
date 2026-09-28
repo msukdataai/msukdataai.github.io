@@ -161,13 +161,27 @@
         }
       }
 
+      function isLaunchEventCompleted(event) {
+        const monthIndex = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"].indexOf(event.month);
+        const day = Number.parseInt(event.day, 10);
+
+        if (monthIndex === -1 || Number.isNaN(day)) {
+          return false;
+        }
+
+        const dayAfterEvent = new Date(2026, monthIndex, day + 1);
+        return new Date() >= dayAfterEvent;
+      }
+
       // Create a featured launch series card
       function createLaunchCard(event) {
         const card = document.createElement("div");
         card.className = `event-card launch-series launch-${event.track}`;
 
         const trackLabel = event.track === "data" ? "DATA TRACK" : "AI TRACK";
-        const linkHtml = event.link
+        const linkHtml = isLaunchEventCompleted(event)
+          ? `<span class="event-link disabled">Completed</span>`
+          : event.link
           ? `<a href="${event.link}" target="_blank" class="event-link">Register</a>`
           : `<span class="event-link disabled">Registration Opens Soon</span>`;
 
